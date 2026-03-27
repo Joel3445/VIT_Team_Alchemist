@@ -1,0 +1,83 @@
+[gd_scene load_steps=14 format=3 uid="uid://cx5ri8k15jmvc"]
+
+[ext_resource type="Texture2D" uid="uid://ba2rrro36amyy" path="res://assets/final-bg.png" id="1_ups6l"]
+[ext_resource type="Texture2D" uid="uid://b20fqqeoftxpw" path="res://assets/shelf.png" id="2_7sxnj"]
+[ext_resource type="Texture2D" uid="uid://v2wbs5j7ypax" path="res://assets/water.png" id="3_cxp7d"]
+[ext_resource type="Texture2D" uid="uid://vy3wdw7f3saf" path="res://assets/vinegar.png" id="4_p3r6q"]
+[ext_resource type="Texture2D" uid="uid://bv3rdiq7e62q7" path="res://assets/sugar (1).png" id="5_3qsiq"]
+[ext_resource type="Texture2D" uid="uid://cb2xbi851g5c8" path="res://assets/stirrer.png" id="6_7087c"]
+[ext_resource type="Texture2D" uid="uid://bispgag4ruihb" path="res://assets/salt.png" id="7_do8p6"]
+[ext_resource type="Texture2D" uid="uid://dqrqf5l1i7vcw" path="res://assets/indicator.png" id="8_sqqhh"]
+[ext_resource type="Texture2D" uid="uid://6r7tnb08alga" path="res://assets/dopper.png" id="9_qx06n"]
+[ext_resource type="Texture2D" uid="uid://co8rbqbc2hu72" path="res://assets/burner.png" id="10_q556m"]
+[ext_resource type="Texture2D" uid="uid://7y3w5p5ps00c" path="res://assets/1.png" id="11_0dp34"]
+[ext_resource type="Texture2D" uid="uid://8yax1cup4nus" path="res://assets/maschot-boy.png" id="12_kypv5"]
+[ext_resource type="Texture2D" uid="uid://cvsdhjqxb4mwb" path="res://assets/bed.png" id="13_38ugu"]
+
+[node name="MainScreen" type="Node2D"]
+
+[node name="background" type="Sprite2D" parent="."]
+texture = ExtResource("1_ups6l")
+
+[node name="shelf" type="Sprite2D" parent="."]
+position = Vector2(432.00003, -125.99999)
+scale = Vector2(5.6562495, 5.78125)
+texture = ExtResource("2_7sxnj")
+
+[node name="water" type="Sprite2D" parent="shelf"]
+position = Vector2(-33.06078, -43.93513)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_cxp7d")
+
+[node name="vinegar" type="Sprite2D" parent="shelf"]
+position = Vector2(-1.2375745, -44.627026)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_p3r6q")
+
+[node name="sugar" type="Sprite2D" parent="shelf"]
+position = Vector2(-28.287296, -20.064865)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_3qsiq")
+
+[node name="stirrer" type="Sprite2D" parent="shelf"]
+position = Vector2(32.883972, 10.897295)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("6_7087c")
+
+[node name="salt" type="Sprite2D" parent="shelf"]
+position = Vector2(0.5303813, -19.545946)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_do8p6")
+
+[node name="indicator" type="Sprite2D" parent="shelf"]
+position = Vector2(31.292816, -17.470272)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("8_sqqhh")
+
+[node name="dropper" type="Sprite2D" parent="shelf"]
+position = Vector2(2.828724, 5.3621607)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("9_qx06n")
+
+[node name="burner" type="Sprite2D" parent="shelf"]
+position = Vector2(-29.171278, 7.783782)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("10_q556m")
+
+[node name="beaker" type="Sprite2D" parent="shelf"]
+position = Vector2(28.64088, -44.799995)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("11_0dp34")
+
+[node name="maschot" type="Sprite2D" parent="."]
+position = Vector2(-418.99997, 78.000015)
+scale = Vector2(4.5, 4.453)
+texture = ExtResource("12_kypv5")
+
+[node name="table" type="Sprite2D" parent="."]
+position = Vector2(-14.000004, -218)
+scale = Vector2(3.45, 3.45)
+texture = ExtResource("13_38ugu")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.75, 0.63)
