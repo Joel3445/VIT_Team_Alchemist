@@ -1,0 +1,161 @@
+{
+  "meta": {
+	"id": "test1",
+	"version": "1.0",
+	"domain": "SimpleFarmingQuestArena"
+  },
+  "registers": {
+	"assets": [
+	  {
+		"id": "CHILD",
+		"type": "object",
+		"label": "Child"
+	  },
+	  {
+		"id": "SEED",
+		"type": "item",
+		"label": "Seed"
+	  },
+	  {
+		"id": "SOIL",
+		"type": "zone",
+		"label": "Soil"
+	  },
+	  {
+		"id": "WATERING_CAN",
+		"type": "object",
+		"label": "Watering Can"
+	  }
+	],
+	"actions": [
+	  {
+		"id": "PLANT",
+		"label": "Plant Seed",
+		"target": "CHILD"
+	  },
+	  {
+		"id": "WATER",
+		"label": "Water Plant",
+		"target": "WATERING_CAN"
+	  },
+	  {
+		"id": "HARVEST",
+		"label": "Harvest Crop",
+		"target": "CHILD"
+	  }
+	],
+	"containers": [
+	  {
+		"id": "GARDEN",
+		"holds": [
+          "SOIL"
+		]
+	  }
+	],
+	"states": [
+	  {
+		"id": "IDLE",
+		"asset": "CHILD",
+		"value": "idle"
+	  },
+	  {
+		"id": "PLANTING",
+		"asset": "CHILD",
+		"value": "planting"
+	  },
+	  {
+		"id": "WATERED",
+		"asset": "WATERING_CAN",
+		"value": "watered"
+	  }
+	],
+	"effects": [
+	  {
+		"id": "GROWING",
+		"changes": "STATE_ID",
+		"to": "PLANTING"
+	  },
+	  {
+		"id": "HARVESTED",
+		"changes": "STATE_ID",
+		"to": "IDLE"
+	  }
+	],
+	"conditions": [
+	  {
+		"id": "SOIL_AVAILABLE",
+		"check": "STATE_ID",
+		"equals": "idle"
+	  },
+	  {
+		"id": "WATERED",
+		"check": "STATE_ID",
+		"equals": "watered"
+	  }
+	],
+	"reactions": [
+	  {
+		"id": "PLANT",
+		"on": "PLANT",
+		"if": "SOIL_AVAILABLE",
+		"trigger": "GROWING"
+	  },
+	  {
+		"id": "HARVEST",
+		"on": "HARVEST",
+		"if": "WATERED",
+		"trigger": "HARVESTED"
+	  }
+	]
+  },
+  "experiment": {
+	"start": "IDLE",
+	"steps": [
+	  {
+		"state_id": "IDLE",
+		"description": "Child picks up seed and goes to the garden",
+		"wire": {
+		  "on": "PLANT",
+		  "condition": null,
+		  "next": "GARDEN"
+		}
+	  },
+	  {
+		"state_id": "GARDEN",
+		"description": "Child plants seed in the soil",
+		"wire": {
+		  "on": "PLANT",
+		  "condition": "SOIL_AVAILABLE",
+		  "next": "PLANTING"
+		}
+	  },
+	  {
+		"state_id": "PLANTING",
+		"description": "Child waters the planted seed using a watering can",
+		"wire": {
+		  "on": "WATER",
+		  "condition": null,
+		  "next": "WATERED"
+		}
+	  },
+	  {
+		"state_id": "WATERED",
+		"description": "Child waits for the crop to grow",
+		"wire": {
+		  "on": null,
+		  "condition": null,
+		  "next": "IDLE"
+		}
+	  },
+	  {
+		"state_id": "IDLE",
+		"description": "Child harvests the grown crop",
+		"wire": {
+		  "on": "HARVEST",
+		  "condition": "WATERED",
+		  "next": "END"
+		}
+	  }
+	]
+  }
+}
