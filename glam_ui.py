@@ -17,7 +17,7 @@ from PyQt5.QtGui import QColor, QTextCharFormat, QSyntaxHighlighter, QFont, QPal
 
 # ── Config ────────────────────────────────────────────────────────────────────
 OLLAMA_URL  = "http://localhost:11434/api/generate"
-MODEL       = "phi3:mini"
+MODEL       = "mistral"
 DEFAULT_OUT = os.path.join(os.path.expanduser("~"), "godot_project", "data", "quests")
 
 GDSCRIPTS = {
@@ -350,8 +350,8 @@ class GenerateWorker(QThread):
                 "options": {
                     "temperature": 0.1,      # lower = more deterministic
                     "num_thread":  6,
-                    "num_ctx":     4096,
-                    "num_predict": 1200,     # enough for a full DSL
+                    "num_predict": 4096,     # enough for a full DSL
+                    #"num_ctx":     4096,
                     "stop": ["\n\n\n"]
                 }
             }
