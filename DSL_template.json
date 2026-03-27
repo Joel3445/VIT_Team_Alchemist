@@ -1,0 +1,48 @@
+{
+  "meta": {
+    "id": "",
+    "version": "1.0",
+    "domain": "chemistry",
+    "difficulty": ""
+  },
+
+  "registries": {
+
+    "assets": {
+      "items": [],
+      "containers": [],
+      "tools": []
+    },
+
+    "actions": {},
+
+    "containers": {},
+
+    "states": {},
+
+    "effects": {},
+
+    "conditions": [],
+
+    "reactions": []
+  },
+
+  "experiment": {
+    "id": "",
+    "start_step": 1,
+
+    "steps": [
+
+      {
+        "step_id": 1,
+        "action": "",
+        "target": "",
+        "required": {},
+        "conditions": [],
+        "on_complete": [],
+        "next_step": null
+      }
+
+    ]
+  }
+}
