@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b70x5esxxeoxt"]
+
+[ext_resource type="Script" uid="uid://nixnsa1ga3kv" path="res://scenes/dialogue_ui.gd" id="1_dwk8m"]
+
+[node name="DialogueUI" type="CanvasLayer" unique_id=1616472320]
+script = ExtResource("1_dwk8m")
+
+[node name="DialogueBox" type="Panel" parent="." unique_id=330565679]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="DialogueBox" unique_id=1894485279]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DialogueText" type="Label" parent="DialogueBox/MarginContainer" unique_id=204238561]
+layout_mode = 2

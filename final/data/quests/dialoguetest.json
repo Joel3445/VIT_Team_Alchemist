@@ -1,0 +1,121 @@
+{
+  "meta": {
+	"id": "dialoguetest",
+	"version": "1.0",
+	"domain": "Quest Arena"
+  },
+  "registers": {
+	"assets": [
+	  {
+		"id": "PLAYER",
+		"type": "object",
+		"label": "Player"
+	  },
+	  {
+		"id": "NPC_WEATHERMAN",
+		"type": "npc",
+		"label": "Weatherman NPC"
+	  }
+	],
+	"actions": [
+	  {
+		"id": "ASK_QUESTION",
+		"label": "Ask the Weatherman a question",
+		"target": "NPC_WEATHERMAN"
+	  },
+	  {
+		"id": "ANSWER_QUESTION",
+		"label": "Answer the Weatherman's question",
+		"target": "PLAYER"
+	  }
+	],
+	"containers": [],
+	"states": [
+	  {
+		"id": "WEATHER_RAINY",
+		"asset": "STATE_WEATHER",
+		"value": "rainy"
+	  },
+	  {
+		"id": "WEATHER_SUNNY",
+		"asset": "STATE_WEATHER",
+		"value": "sunny"
+	  },
+	  {
+		"id": "WEATHER_WINDY",
+		"asset": "STATE_WEATHER",
+		"value": "windy"
+	  },
+	  {
+		"id": "WEATHER_CLOUDY",
+		"asset": "STATE_WEATHER",
+		"value": "cloudy"
+	  }
+	],
+	"effects": [
+	  {
+		"id": "UPDATE_STATE_WEATHER",
+		"changes": "WEATHER_STATE",
+		"to": "new_value"
+	  }
+	],
+	"conditions": [
+	  {
+		"id": "IS_QUESTION_ASKED",
+		"check": "STATE_QUESTION_ASKED",
+		"equals": true
+	  },
+	  {
+		"id": "CORRECT_ANSWER",
+		"check": "STATE_PLAYER_ANSWER",
+		"equals": "expected_answer"
+	  }
+	],
+	"reactions": [
+	  {
+		"id": "GIVE_REWARD",
+		"on": "ANSWER_QUESTION",
+		"if": "CORRECT_ANSWER",
+		"trigger": "UPDATE_STATE_QUESTION_ASKED"
+	  }
+	]
+  },
+  "dialogue": {
+	"MAIN": {
+	  "start": "Hello there! I have a question for you. How's the weather?",
+	  "end": "Goodbye!"
+	}
+  },
+  "experiment": {
+	"start": "ASK_QUESTION",
+	"steps": [
+	  {
+		"state_id": "ASK_QUESTION",
+		"description": "The Weatherman asks the Player about the weather",
+		"wire": {
+		  "on": "ASK_QUESTION",
+		  "condition": "IS_QUESTION_ASKED",
+		  "next": "ANSWER_QUESTION"
+		}
+	  },
+	  {
+		"state_id": "ANSWER_QUESTION",
+		"description": "The Player answers the Weatherman's question",
+		"wire": {
+		  "on": "ANSWER_QUESTION",
+		  "condition": "IS_CORRECT_ANSWER",
+		  "next": "GIVE_REWARD"
+		}
+	  },
+	  {
+		"state_id": "GIVE_REWARD",
+		"description": "The Weatherman gives the Player a reward for the correct answer",
+		"wire": {
+		  "on": "UPDATE_STATE_QUESTION_ASKED",
+		  "condition": "",
+		  "next": "END"
+		}
+	  }
+	]
+  }
+}

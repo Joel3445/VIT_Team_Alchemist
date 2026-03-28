@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cqow47bch5ocs"]
+
+[ext_resource type="Script" uid="uid://bknp1vwnsgs" path="res://scripts/GLAMSystem.gd" id="1_vcsgt"]
+[ext_resource type="Script" uid="uid://4o6hiaggvhdc" path="res://scripts/GLAMLoader.gd" id="2_c01mt"]
+[ext_resource type="Script" uid="uid://dfkxa8lx1flv5" path="res://scripts/ExperimentRunner.gd" id="3_nxtc6"]
+[ext_resource type="Script" uid="uid://roedgni5n5rq" path="res://scripts/RegisterManager.gd" id="4_jlsqs"]
+[ext_resource type="Script" uid="uid://cpsa5v48eetgw" path="res://scripts/DialogueUI.gd" id="5_q8u5g"]
+
+[node name="GLAMSystem" type="Node" unique_id=143340494]
+script = ExtResource("1_vcsgt")
+
+[node name="GLAMLoader" type="Node" parent="." unique_id=2141804045]
+script = ExtResource("2_c01mt")
+
+[node name="ExperimentRunner" type="Node" parent="." unique_id=246888890]
+script = ExtResource("3_nxtc6")
+
+[node name="RegisterManager" type="Node" parent="." unique_id=559894790]
+script = ExtResource("4_jlsqs")
+
+[node name="DialogueUI" type="CanvasLayer" parent="." unique_id=206536362]
+script = ExtResource("5_q8u5g")
+
+[node name="Box" type="Panel" parent="DialogueUI" unique_id=584833191]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Text" type="Label" parent="DialogueUI/Box" unique_id=1297260297]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

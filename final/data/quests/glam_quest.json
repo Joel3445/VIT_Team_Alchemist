@@ -1,0 +1,70 @@
+{
+  "meta": {
+	"id": "glam_quest",
+	"version": "1.0",
+	"domain": "gaming"
+  },
+  "registers": {
+	"assets": [
+	  { "id": "lab_guide", "type": "npc",    "label": "Lab Guide" },
+	  { "id": "vinegar",   "type": "item",   "label": "Vinegar" },
+	  { "id": "container", "type": "object", "label": "Container" }
+	],
+	"actions": [
+	  { "id": "talk",             "label": "Talk to Lab Guide" },
+	  { "id": "collect_item",     "label": "Collect Item" },
+	  { "id": "mix_items",        "label": "Pour into Container" },
+	  { "id": "observe_reaction", "label": "Observe Reaction" }
+	],
+	"states": [
+	  { "id": "STATE_GUIDE",     "asset": "lab_guide", "value": "initial" },
+	  { "id": "STATE_VINEGAR",   "asset": "vinegar",   "value": "none" },
+	  { "id": "STATE_CONTAINER", "asset": "container", "value": "empty" }
+	],
+	"effects": [
+	  { "id": "EFF_VINEGAR_COLLECTED", "changes": "STATE_VINEGAR",   "to": "collected" },
+	  { "id": "EFF_MIXED",             "changes": "STATE_CONTAINER", "to": "mixed" },
+	  { "id": "EFF_COMPLETE",          "changes": "STATE_GUIDE",     "to": "completed" }
+	],
+	"conditions": [
+	  { "id": "COND_HAS_VINEGAR", "check": "STATE_VINEGAR",   "equals": "collected" },
+	  { "id": "COND_IS_MIXED",    "check": "STATE_CONTAINER", "equals": "mixed" }
+	],
+	"reactions": [
+	  { "id": "REACT_COLLECT", "on": "collect_item",     "if": "COND_HAS_VINEGAR", "trigger": "EFF_VINEGAR_COLLECTED" },
+	  { "id": "REACT_MIX",     "on": "mix_items",        "if": "COND_HAS_VINEGAR", "trigger": "EFF_MIXED" },
+	  { "id": "REACT_DONE",    "on": "observe_reaction", "if": "COND_IS_MIXED",    "trigger": "EFF_COMPLETE" }
+	]
+  },
+  "dialogue": {
+	"MAIN": {
+	  "start": "Ah, welcome to my lab! I am Professor Glam. Today we shall add vinegar to the beaker and observe what happens!",
+	  "end": "Magnificent! You have successfully completed the experiment. Science is wonderful, isn't it?"
+	}
+  },
+  "experiment": {
+	"start": "STEP_GREET",
+	"steps": [
+	  {
+		"state_id": "STEP_GREET",
+		"description": "Press E to talk to the Professor and get your instructions.",
+		"wire": { "on": "talk", "condition": "", "next": "STEP_COLLECT_VINEGAR" }
+	  },
+	  {
+		"state_id": "STEP_COLLECT_VINEGAR",
+		"description": "Good! Now pick up the VINEGAR from the shelf on the right.",
+		"wire": { "on": "collect_item", "condition": "", "next": "STEP_POUR" }
+	  },
+	  {
+		"state_id": "STEP_POUR",
+		"description": "Excellent! Now click the beaker on the table to pour the vinegar in.",
+		"wire": { "on": "mix_items", "condition": "", "next": "STEP_OBSERVE" }
+	  },
+	  {
+		"state_id": "STEP_OBSERVE",
+		"description": "Now click the beaker again to observe the reaction!",
+		"wire": { "on": "observe_reaction", "condition": "", "next": "END" }
+	  }
+	]
+  }
+}

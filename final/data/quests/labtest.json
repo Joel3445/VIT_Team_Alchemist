@@ -1,0 +1,65 @@
+{
+  "meta": {
+	"id": "labtest",
+	"version": "1.0",
+	"domain": "game"
+  },
+  "registers": {
+	"assets": [
+	  {
+		"id": "LAB_GUIDE",
+		"type": "npc",
+		"label": "Lab Guide"
+	  }
+	],
+	"actions": [
+	  {
+		"id": "TALK_TO_GUIDE",
+		"label": "Speak to Lab Guide",
+		"target": "LAB_GUIDE"
+	  },
+	  {
+		"id": "COLLECT_VINEGAR",
+		"label": "Collect Vinegar",
+		"asset": "BOTTLE_OF_VINEGAR"
+	  }
+	],
+	"states": [
+	  {
+		"id": "INITIAL",
+		"asset": "PLAYER",
+		"value": "Waiting for instructions"
+	  }
+	]
+  },
+  "dialogue": {
+	"MAIN": {
+	  "start": "Hello, I'm here to learn about chemical reactions!",
+	  "end": "Thank you for your help!"
+	}
+  },
+  "experiment": {
+	"start": "INITIAL",
+	"steps": [
+	  {
+		"state_id": "GUIDE_INSTRUCTION",
+		"description": "Speak with the Lab Guide to learn about vinegar and baking soda reaction.",
+		"wire": {
+		  "on": "TALK_TO_GUIDE"
+		}
+	  },
+	  {
+		"state_id": "COLLECT_BAKING_SODA",
+		"description": "Collect a bottle of BAKING SODA from your inventory or the environment",
+		"wire": {}
+	  },
+	  {
+		"state_id": "MIX_REACTIONS",
+		"description": "Find and mix vinegar with baking soda in an open container to observe the reaction.",
+		"wire": {
+		  "on": "COLLECT_VINEGAR"
+		}
+	  }
+	]
+  }
+}

@@ -1,0 +1,238 @@
+[gd_scene format=3 uid="uid://doyrhpetgq8vg"]
+
+[ext_resource type="Texture2D" uid="uid://ba2rrro36amyy" path="res://assets/final-bg.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://cvsdhjqxb4mwb" path="res://assets/bed.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://vy3wdw7f3saf" path="res://assets/vinegar.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://bygbx5afu36yl" path="res://assets/baking_soda.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://v2wbs5j7ypax" path="res://assets/water.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://bispgag4ruihb" path="res://assets/salt.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://da4vcmuwlkob3" path="res://assets/sugar.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://do5w00s1dxlhl" path="res://assets/beaker.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://yjau6uhc62om" path="res://assets/flask.png" id="12"]
+[ext_resource type="Texture2D" uid="uid://c4bfc4dwftbvf" path="res://assets/test_tube.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://co8rbqbc2hu72" path="res://assets/burner.png" id="14"]
+[ext_resource type="Script" uid="uid://bknp1vwnsgs" path="res://scripts/GLAMSystem.gd" id="15"]
+[ext_resource type="Script" uid="uid://4o6hiaggvhdc" path="res://scripts/GLAMLoader.gd" id="16"]
+[ext_resource type="Script" uid="uid://roedgni5n5rq" path="res://scripts/RegisterManager.gd" id="17"]
+[ext_resource type="Script" uid="uid://dfkxa8lx1flv5" path="res://scripts/ExperimentRunner.gd" id="18"]
+[ext_resource type="Script" uid="uid://cpsa5v48eetgw" path="res://scripts/DialogueUI.gd" id="19"]
+[ext_resource type="Texture2D" uid="uid://erv6tssqo238" path="res://assets/eyeopen.png" id="19_04y78"]
+[ext_resource type="Script" uid="uid://cay2axsxngiba" path="res://scripts/ItemInteract.gd" id="20"]
+[ext_resource type="Script" uid="uid://dt61rv2qy5y0g" path="res://scripts/MascotAnimator.gd" id="21"]
+[ext_resource type="Script" uid="uid://db21pavti5lul" path="res://scripts/CursorItem.gd" id="23"]
+[ext_resource type="VideoStream" uid="uid://di0glf1r5fwom" path="res://assets/Video Project 1.ogv" id="23_id3rc"]
+[ext_resource type="Script" uid="uid://boh352epst6o7" path="res://scripts/ContainerInteract.gd" id="24_m8dww"]
+[ext_resource type="Script" uid="uid://cfmsw8f0oicxw" path="res://scripts/BeakerAnimator.gd" id="25"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dk2df"]
+size = Vector2(120, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3y4bn"]
+size = Vector2(120, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2wsp0"]
+size = Vector2(120, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_604m4"]
+size = Vector2(120, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4bau"]
+size = Vector2(120, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82lsk"]
+size = Vector2(120, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ybr5i"]
+size = Vector2(120, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5wvfb"]
+size = Vector2(120, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_beaker"]
+size = Vector2(140, 140)
+
+[node name="Main" type="Node2D" unique_id=720822181]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1827131162]
+position = Vector2(574.25, 326.75)
+scale = Vector2(0.74576825, 0.6196289)
+texture = ExtResource("1")
+
+[node name="Bed" type="Sprite2D" parent="." unique_id=2091147967]
+z_index = 1
+position = Vector2(582, 317)
+scale = Vector2(2.386, 1.31)
+texture = ExtResource("3")
+
+[node name="Mascot" type="Node2D" parent="." unique_id=705756038]
+position = Vector2(161, 394)
+scale = Vector2(2.5, 2.5)
+script = ExtResource("21")
+
+[node name="Eyes" type="Sprite2D" parent="Mascot" unique_id=1746511529]
+light_mask = 543
+z_index = 1
+position = Vector2(49.200005, 24.000004)
+scale = Vector2(0.09, 0.08980001)
+texture = ExtResource("19_04y78")
+
+[node name="Items" type="Node2D" parent="." unique_id=1241726816]
+
+[node name="Vinegar" type="Area2D" parent="Items" unique_id=956886922]
+z_index = 2
+position = Vector2(786.60004, 182.6)
+scale = Vector2(0.94687504, 0.9)
+script = ExtResource("20")
+item_id = "vinegar"
+item_texture = ExtResource("6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Items/Vinegar" unique_id=1335679331]
+texture = ExtResource("6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Vinegar" unique_id=1969488165]
+shape = SubResource("RectangleShape2D_dk2df")
+
+[node name="BakingSoda" type="Area2D" parent="Items" unique_id=621624204]
+z_index = 2
+position = Vector2(892, 177)
+scale = Vector2(1.3, 1.3)
+script = ExtResource("20")
+item_id = "baking_soda"
+item_texture = ExtResource("7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Items/BakingSoda" unique_id=582188087]
+texture = ExtResource("7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/BakingSoda" unique_id=525892684]
+shape = SubResource("RectangleShape2D_3y4bn")
+
+[node name="Water" type="Area2D" parent="Items" unique_id=1969387341]
+z_index = 2
+position = Vector2(1021, 180)
+scale = Vector2(1.0562512, 0.9625001)
+script = ExtResource("20")
+item_id = "water"
+item_texture = ExtResource("8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Items/Water" unique_id=1207187682]
+texture = ExtResource("8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Water" unique_id=148759423]
+shape = SubResource("RectangleShape2D_2wsp0")
+
+[node name="Salt" type="Area2D" parent="Items" unique_id=1443803990]
+z_index = 2
+position = Vector2(792, 284)
+scale = Vector2(1.3, 1.3)
+script = ExtResource("20")
+item_id = "salt"
+item_texture = ExtResource("9")
+is_correct = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Items/Salt" unique_id=865526966]
+texture = ExtResource("9")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Salt" unique_id=108595300]
+shape = SubResource("RectangleShape2D_604m4")
+
+[node name="Sugar" type="Area2D" parent="Items" unique_id=1512650769]
+z_index = 2
+position = Vector2(1018, 294)
+scale = Vector2(1.3, 1.3)
+script = ExtResource("20")
+item_id = "sugar"
+item_texture = ExtResource("10")
+is_correct = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Items/Sugar" unique_id=807155440]
+texture = ExtResource("10")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Sugar" unique_id=2044070051]
+shape = SubResource("RectangleShape2D_t4bau")
+
+[node name="Flask" type="Area2D" parent="Items" unique_id=859774856]
+z_index = 2
+position = Vector2(749, 442)
+scale = Vector2(1.3, 1.3)
+script = ExtResource("20")
+item_id = "flask"
+item_texture = ExtResource("12")
+is_correct = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Items/Flask" unique_id=512300184]
+texture = ExtResource("12")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Flask" unique_id=1249018458]
+shape = SubResource("RectangleShape2D_82lsk")
+
+[node name="TestTube" type="Area2D" parent="Items" unique_id=414270174]
+z_index = 2
+position = Vector2(943, 471)
+scale = Vector2(0.6343757, 0.66562486)
+script = ExtResource("20")
+item_id = "test_tube"
+item_texture = ExtResource("13")
+is_correct = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Items/TestTube" unique_id=816177124]
+texture = ExtResource("13")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/TestTube" unique_id=1618530697]
+shape = SubResource("RectangleShape2D_ybr5i")
+
+[node name="Burner" type="Area2D" parent="Items" unique_id=1305320599]
+z_index = 2
+position = Vector2(1033, 452)
+scale = Vector2(1.3, 1.3)
+script = ExtResource("20")
+item_id = "burner"
+item_texture = ExtResource("14")
+is_correct = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Items/Burner" unique_id=422011988]
+texture = ExtResource("14")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Items/Burner" unique_id=2061857447]
+shape = SubResource("RectangleShape2D_5wvfb")
+
+[node name="Beaker" type="Area2D" parent="." unique_id=1296196790]
+z_index = 4
+position = Vector2(515, 468)
+scale = Vector2(1.3, 1.3)
+script = ExtResource("24_m8dww")
+
+[node name="Sprite2D" type="Sprite2D" parent="Beaker" unique_id=48851930]
+texture = ExtResource("11")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Beaker" unique_id=1041818767]
+shape = SubResource("RectangleShape2D_beaker")
+
+[node name="BeakerAnimator" type="Node2D" parent="Beaker" unique_id=978570149]
+script = ExtResource("25")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Beaker/BeakerAnimator" unique_id=528258319]
+offset_top = -160.0
+offset_right = 200.0
+offset_bottom = 40.0
+stream = ExtResource("23_id3rc")
+expand = true
+
+[node name="CursorItem" type="Sprite2D" parent="." unique_id=939503369]
+visible = false
+z_index = 100
+script = ExtResource("23")
+
+[node name="GLAMSystem" type="Node" parent="." unique_id=1297911201]
+script = ExtResource("15")
+
+[node name="GLAMLoader" type="Node" parent="GLAMSystem" unique_id=189216294]
+script = ExtResource("16")
+
+[node name="RegisterManager" type="Node" parent="GLAMSystem" unique_id=1809148360]
+script = ExtResource("17")
+
+[node name="ExperimentRunner" type="Node" parent="GLAMSystem" unique_id=1999337203]
+script = ExtResource("18")
+
+[node name="DialogueUI" type="CanvasLayer" parent="GLAMSystem" unique_id=568795378]
+script = ExtResource("19")

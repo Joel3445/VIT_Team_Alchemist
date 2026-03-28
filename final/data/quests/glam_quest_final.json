@@ -1,0 +1,173 @@
+{
+  "meta": {
+	"id": "glam_quest",
+	"version": "1.0",
+	"domain": "gaming"
+  },
+  "registers": {
+	"assets": [
+	  {
+		"id": "lab_guide",
+		"type": "npc",
+		"label": "Lab Guide"
+	  },
+	  {
+		"id": "vinegar",
+		"type": "item",
+		"label": "Vinegar"
+	  },
+	  {
+		"id": "baking_soda",
+		"type": "item",
+		"label": "Baking Soda"
+	  },
+	  {
+		"id": "container",
+		"type": "object",
+		"label": "Container"
+	  }
+	],
+	"actions": [
+	  {
+		"id": "talk",
+		"label": "Talk to NPC"
+	  },
+	  {
+		"id": "collect_item",
+		"label": "Collect Item"
+	  },
+	  {
+		"id": "mix_items",
+		"label": "Mix Items in Container"
+	  },
+	  {
+		"id": "observe_reaction",
+		"label": "Observe Reaction"
+	  }
+	],
+	"states": [
+	  {
+		"id": "start",
+		"asset": "lab_guide",
+		"value": "initial"
+	  },
+	  {
+		"id": "talk_to_guide",
+		"asset": "lab_guide",
+		"value": "talked"
+	  },
+	  {
+		"id": "collect_vinegar",
+		"asset": "vinegar",
+		"value": "collected"
+	  },
+	  {
+		"id": "collect_baking_soda",
+		"asset": "baking_soda",
+		"value": "collected"
+	  },
+	  {
+		"id": "mix_items",
+		"asset": "container",
+		"value": "mixed"
+	  },
+	  {
+		"id": "observe_reaction",
+		"asset": "container",
+		"value": "observed"
+	  }
+	],
+	"effects": [
+	  {
+		"id": "complete_quest",
+		"changes": "start",
+		"to": "completed"
+	  }
+	],
+	"conditions": [
+	  {
+		"id": "has_vinegar",
+		"check": "collect_vinegar",
+		"equals": "collected"
+	  },
+	  {
+		"id": "has_baking_soda",
+		"check": "collect_baking_soda",
+		"equals": "collected"
+	  }
+	],
+	"reactions": [
+	  {
+		"id": "trigger_foamy_reaction",
+		"on": "observe_reaction",
+		"if": "has_vinegar && has_baking_soda",
+		"trigger": "complete_quest"
+	  }
+	]
+  },
+  "dialogue": {
+	"MAIN": {
+	  "start": "Hello! I need your help with an experiment. First, let's talk.",
+	  "end": "Goodbye! You completed the experiment by observing a foaming reaction."
+	}
+  },
+  "experiment": {
+	"start": "START",
+	"steps": [
+	  {
+		"state_id": "START",
+		"description": "Start of the quest",
+		"wire": {
+		  "on": "talk",
+		  "condition": "",
+		  "next": "talk_to_guide"
+		}
+	  },
+	  {
+		"state_id": "talk_to_guide",
+		"description": "Talk to the lab guide",
+		"wire": {
+		  "on": "talk",
+		  "condition": "",
+		  "next": "collect_vinegar"
+		}
+	  },
+	  {
+		"state_id": "collect_vinegar",
+		"description": "Collect vinegar",
+		"wire": {
+		  "on": "collect_item",
+		  "condition": "",
+		  "next": "collect_baking_soda"
+		}
+	  },
+	  {
+		"state_id": "collect_baking_soda",
+		"description": "Collect baking soda",
+		"wire": {
+		  "on": "collect_item",
+		  "condition": "",
+		  "next": "mix_items"
+		}
+	  },
+	  {
+		"state_id": "mix_items",
+		"description": "Mix items",
+		"wire": {
+		  "on": "mix_items",
+		  "condition": "",
+		  "next": "observe_reaction"
+		}
+	  },
+	  {
+		"state_id": "observe_reaction",
+		"description": "Observe reaction",
+		"wire": {
+		  "on": "observe_reaction",
+		  "condition": "",
+		  "next": "END"
+		}
+	  }
+	]
+  }
+}
